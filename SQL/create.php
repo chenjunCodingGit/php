@@ -1,7 +1,7 @@
 <?php 
 $servername = "localhost";
 $username = "root";
-$password = "1010";
+$password = "";
 
 // 创建连接
 $conn = new mysqli($servername,$username,$password);

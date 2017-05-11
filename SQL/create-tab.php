@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "1010";
+$password = "";
 $dbname = "mydb";
 
 // 创建连接
@@ -12,17 +12,16 @@ if ($conn->connect_error) {
 } 
 
 // 使用 sql 创建数据表
-$sql = "CREATE TABLE ajax (
+$sql = "CREATE TABLE user (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
 name VARCHAR(30) NOT NULL,
-url VARCHAR(30) NOT NULL,
-alexa VARCHAR(30) NOT NULL,
-country VARCHAR(30) NOT NULL,
-reg_date TIMESTAMP
+password VARCHAR(30) NOT NULL,
+email VARCHAR(30) NOT NULL,
+tel VARCHAR(30) NOT NULL
 )ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1";
 
 if ($conn->query($sql) === TRUE) {
-    echo "Table ajax created successfully";
+    echo "Table user created successfully";
 } else {
     echo "创建数据表错误: " . $conn->error;
 }

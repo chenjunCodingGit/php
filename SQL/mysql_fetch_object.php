@@ -1,5 +1,5 @@
 <?php 
-$con=mysqli_connect("localhost","root","1010","mydb");
+$con=mysqli_connect("localhost","root","","mydb");
 // 检测连接
 if (mysqli_connect_errno())
 {
@@ -8,7 +8,7 @@ if (mysqli_connect_errno())
 mysqli_query($con, "set names utf8");
 
 
-$query = mysqli_query($con,"SELECT * FROM ajax");
+$query = mysqli_query($con,"SELECT * FROM user");
 
 //$obj = mysqli_fetch_object($query);
 while ($obj = mysqli_fetch_object($query)) {
