@@ -19,11 +19,11 @@ $callback = $_GET['callback'];
 
 $arr = array();
 
-$result=$mysqliConn->query("SELECT email,tel FROM user where name='$name'");
+$result=$mysqliConn->query("SELECT id,title,scale,price FROM favorite where name='$name'");
 
 $arr = array();
 while ($row=mysqli_fetch_array($result,MYSQLI_ASSOC)) {
-	array_push($arr, $row);
+    array_push($arr, $row);
 }
 echo $callback.'('.json_encode($arr).')';
 ?>
