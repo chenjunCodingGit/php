@@ -4,7 +4,7 @@
 // ini_set('session.use_trans_sid', 0); //不使用 GET/POST 变量方式
 ini_set('session.use_cookies', 1); //使用cookie保存session_id的方式
 ini_set('session.cookie_path', '/');
-ini_set('session.cookie_domain', '192.168.155.2');
+ini_set('session.cookie_domain', '192.168.155.1');
 session_start();
 
 header('Access-Control-Allow-Origin:*');
@@ -21,6 +21,10 @@ $mysqliConn->connect('localhost', 'root', '', 'mydb');
         printf("Unable to connect to the database:%s", $mysqliConn->connect_error);
         exit();
     }
+
+// 设置编码，防止中文乱码
+mysqli_query($mysqliConn, "set names utf8");
+
 //数据库查询所有（比较）
 $name=$_GET['name']; 
 $password=$_GET['password'];

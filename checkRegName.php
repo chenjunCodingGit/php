@@ -1,4 +1,5 @@
 <?php 
+header('Access-Control-Allow-Origin:*');
 
 $mysqliConn=new mysqli();
 
@@ -10,7 +11,7 @@ $mysqliConn->connect('localhost', 'root', '', 'mydb');
     }
 //数据库查询所有（比较）
 $name=$_GET['name']; 
-// $password=$_GET['password'];
+$callback = $_GET['callback'];
 
 $result=$mysqliConn->query("select name from user where name='" . $name ."'");
 
@@ -21,14 +22,14 @@ if(mysqli_num_rows($result) >= 1){
         'status' => 0, // 0成功，1失败
         'msg'   => 'success'
     );
-    echo json_encode($ret);
+    echo $callback.'('.json_encode($ret).')';
     exit();
 }else{
 	$ret = array(
         'status' => 1, // 0成功，1失败
         'msg'   => 'failed'
     );
-    echo json_encode($ret);
+    echo $callback.'('.json_encode($ret).')';
     exit();
 }
 ?>
