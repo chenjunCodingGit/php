@@ -12,10 +12,10 @@ if (mysqli_connect_errno())
 // 设置编码，防止中文乱码
 mysqli_query($con, "set names utf8");
 
-// $id=$_GET['id'];
+$name=$_GET['name'];
 $callback = $_GET['callback'];
 
-$result =  mysqli_query($con,"DELETE FROM favorite");
+$result =  mysqli_query($con,"DELETE FROM favorite WHERE name='".$name."'");
 
 if($result){
     $ret = array(

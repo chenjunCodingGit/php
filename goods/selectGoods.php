@@ -14,12 +14,12 @@ $mysqliConn->connect('localhost', 'root', '', 'mydb');
 mysqli_query($mysqliConn, "set names utf8");
 
 //数据库查询所有（比较）
-$name=$_GET['name'];
+// $name=$_GET['name'];
 $callback = $_GET['callback'];
 
 $arr = array();
 
-$result=$mysqliConn->query("SELECT id,title,image,price,isshow FROM favorite where name='$name'");
+$result=$mysqliConn->query("SELECT image,title,price FROM goods");
 
 $arr = array();
 while ($row=mysqli_fetch_array($result,MYSQLI_ASSOC)) {

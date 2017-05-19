@@ -12,19 +12,20 @@ if (mysqli_connect_errno())
 // 设置编码，防止中文乱码
 mysqli_query($con, "set names utf8");
 
-$name=$_GET['name'];
-$title=$_GET['title'];
 $image=$_GET['image'];
+$title=$_GET['title'];
+$describes=$_GET['describes'];
 $price=$_GET['price'];
-$indexs=$_GET['indexs'];
-$isshow=$_GET['isshow'];
+$figure=$_GET['figure'];
+// $isshow=$_GET['isshow'];
 $callback = $_GET['callback'];
 
-$result =  mysqli_query($con,"INSERT INTO favorite (name,title,image,price,indexs,isshow) VALUES ('".$name."', '".$title."','".$image."','".$price."','".$indexs."','".$isshow."')");
+$result =  mysqli_query($con,"INSERT INTO goods (image,title,describes,price,figure) VALUES ('".$image."', '".$title."','".$describes."','".$price."','".$figure."')");
 
 if($result){
     $ret = array(
         'status' => 1, // 1成功，0失败
+        
         'msg'   => 'success'
     );
     echo $callback.'('.json_encode($ret).')';
