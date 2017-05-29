@@ -12,13 +12,33 @@ if (mysqli_connect_errno())
 // 设置编码，防止中文乱码
 mysqli_query($con, "set names utf8");
 
-$name=$_GET['name'];
+// $ids = array(
+//     0=>array(
+//         'id' => 5,
+//         'shopnum' => 55
+//     ),
+//     1=>array(
+//         'id' => 6,
+//         'shopnum' => 66
+//     )
+// );
+
+// echo json_encode($ids);
+
+$ids=$_GET['ids'];
+// $shopnum=$_GET['shopnum'];
 $callback = $_GET['callback'];
 
-$result =  mysqli_query($con,"DELETE FROM shopcar WHERE name='".$name."'");
+foreach ($ids as $value) {
+    $result =  mysqli_query($con,"update shopcar set shopnum='{$value["shopnum"]}' where id='{$value["id"]}'");
+    // $exec="update chips set title='{$v[title]}',url='{$v[url]}' where id='{$v[id]}'";
+    // echo $value['shopnum'];
+}
+
+// $result =  mysqli_query($con,"update shopcar set shopnum='" . $shopnum ."' where id in (5,6);");
 
 if($result){
-    $ret = array(
+	$ret = array(
         'status' => 1, // 1成功，0失败
         'msg'   => 'success'
     );
@@ -26,7 +46,7 @@ if($result){
     // echo json_encode($ret);
     exit();
 }else{
-    $ret = array(
+	$ret = array(
         'status' => 0, // 1成功，0失败
         'msg'   => 'failed'
     );

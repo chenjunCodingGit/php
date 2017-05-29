@@ -12,14 +12,14 @@ if ($conn->connect_error) {
 } 
 
 // 使用 sql 创建数据表
-$sql = "CREATE TABLE shopcar (
+$sql = "CREATE TABLE orders (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-image VARCHAR(50) NOT NULL,
-title VARCHAR(100) NOT NULL,
-scale VARCHAR(30) NOT NULL,
-price VARCHAR(30) NOT NULL,
-figure VARCHAR(30) NOT NULL,
-selected VARCHAR(30) NOT NULL
+username VARCHAR(50) NOT NULL,
+recivename VARCHAR(50) NOT NULL,
+totalprice INT(30) NOT NULL,
+addressProvince VARCHAR(50) NOT NULL,
+addressCity VARCHAR(50) NOT NULL,
+tel INT(100) NOT NULL
 )ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1";
 
 if ($conn->query($sql) === TRUE) {

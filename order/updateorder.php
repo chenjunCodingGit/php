@@ -12,13 +12,18 @@ if (mysqli_connect_errno())
 // 设置编码，防止中文乱码
 mysqli_query($con, "set names utf8");
 
-$name=$_GET['name'];
+$username=$_GET['username'];
+$recivename=$_GET['recivename'];
+// $totalprice=$_GET['totalprice'];
+$addressProvince=$_GET['addressProvince'];
+$addressCity=$_GET['addressCity'];
+$tel=$_GET['tel'];
 $callback = $_GET['callback'];
 
-$result =  mysqli_query($con,"DELETE FROM shopcar WHERE name='".$name."'");
+$result =  mysqli_query($con,"UPDATE orders SET recivename='" . $recivename ."',addressProvince='" . $addressProvince ."',addressCity='" . $addressCity ."',tel='" . $tel ."' WHERE username='" . $username ."'");
 
 if($result){
-    $ret = array(
+	$ret = array(
         'status' => 1, // 1成功，0失败
         'msg'   => 'success'
     );
@@ -26,7 +31,7 @@ if($result){
     // echo json_encode($ret);
     exit();
 }else{
-    $ret = array(
+	$ret = array(
         'status' => 0, // 1成功，0失败
         'msg'   => 'failed'
     );
@@ -37,3 +42,4 @@ if($result){
 
 mysqli_close($con);
 ?>
+

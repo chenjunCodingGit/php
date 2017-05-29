@@ -3,7 +3,8 @@ session_start();
 //unset($_SESSION['views']);
 ini_set('session.use_cookies', 1); //使用cookie保存session_id的方式
 ini_set('session.cookie_path', '/');
-ini_set('session.cookie_domain', '172.19.60.57');
+// ini_set('session.cookie_domain', '192.168.155.5');
+include_once './ip.php';
 
 $callback = $_GET['callback'];
 if(session_destroy()){

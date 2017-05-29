@@ -20,7 +20,7 @@ $figure=$_GET['figure'];
 // $isshow=$_GET['isshow'];
 $callback = $_GET['callback'];
 
-$result =  mysqli_query($con,"INSERT INTO goods (image,title,describes,price,figure) VALUES ('".$image."', '".$title."','".$describes."','".$price."','".$figure."')");
+$result =  mysqli_query($con,"INSERT INTO orders (image,title,describes,price,figure) VALUES ('".$image."', '".$title."','".$describes."','".$price."','".$figure."')");
 
 if($result){
     $ret = array(
