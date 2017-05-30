@@ -1,5 +1,5 @@
 <?php
-//查询该用户的shopcar商品
+//查询该被选中的商品
 header('Access-Control-Allow-Origin:*');
 
 $mysqliConn=new mysqli();
@@ -15,16 +15,19 @@ $mysqliConn->connect('localhost', 'root', '', 'mydb');
 mysqli_query($mysqliConn, "set names utf8");
 
 //数据库查询所有（比较）
-$name=$_GET['name'];
+$ids=$_GET['ids'];
+// $ids = array('12','14');
 $callback = $_GET['callback'];
 
 $arr = array();
-
-$result=$mysqliConn->query("SELECT id,image,title,scale,price,shopnum FROM shopcar where name='$name'");
-
-$arr = array();
-while ($row=mysqli_fetch_array($result,MYSQLI_ASSOC)) {
-    array_push($arr, $row);
+foreach ($ids as $key => $value) {
+$result=$mysqliConn->query("SELECT id,image,title,scale,price,shopnum,selected FROM shopcar where id='{$value}'");
+	
+	while ($row=mysqli_fetch_array($result,MYSQLI_ASSOC)) {
+	    array_push($arr, $row);
+	}
 }
+
+
 echo $callback.'('.json_encode($arr).')';
 ?>
