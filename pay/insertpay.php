@@ -12,28 +12,27 @@ if (mysqli_connect_errno())
 // 设置编码，防止中文乱码
 mysqli_query($con, "set names utf8");
 
-// $name = $_GET['name'];
-// $image = $_GET['image'];
-// $title = $_GET['title'];
-// $thisprice = $_GET['thisprice'];
-// $shopnum = $_GET['shopnum'];
-// $ispay = 0;
-// $goodid = $_GET['goodid'];
-// $callback = $_GET['callback'];
-
-$name = array('aa','bb');
-$image = array('src1','src2');
-$title = array('title1','title2');
-$thisprice = array(5,6);
-$shopnum = array(7,8);
+$name = $_GET['name'];
+$image = $_GET['image'];
+$title = $_GET['title'];
+$thisprice = $_GET['thisprice'];
+$shopnum = $_GET['shopnum'];
 $ispay = 0;
-$goodid = array(1,2);
-// $callback = array('aa','bb');
+$goodid = $_GET['goodid'];
+$callback = $_GET['callback'];
+
+// $name = '2013441514';
+// $image = array('src1','src2');
+// $title = array('title1','title2');
+// $thisprice = array(5,6);
+// $shopnum = array('7','8');
+// $ispay = 0;
+// $goodid = array(1,2);
 
 
-foreach ($name as $key => $value) {
+foreach ($shopnum as $key => $value) {
 // $result =  mysqli_query($con,"INSERT INTO pay (name,image,title,thisprice,shopnum,ispay,goodid) VALUES ('".$value."', '".$image."','".$title."','".$thisprice."','".$shopnum."','".$ispay."','".$goodid."')");
-$result =  mysqli_query($con,"INSERT INTO pay (name,image,title,thisprice,shopnum,ispay,goodid) VALUES ('".$value."', '{$image["$key"]}','{$title["$key"]}','{$thisprice["$key"]}','{$shopnum["$key"]}','".$ispay."','{$goodid["$key"]}')");
+$result =  mysqli_query($con,"INSERT INTO pay (name,image,title,thisprice,shopnum,ispay,goodid) VALUES ('".$name."', '{$image["$key"]}','{$title["$key"]}','{$thisprice["$key"]}','".$value."','".$ispay."','{$goodid["$key"]}')");
 }
 
 if($result){
