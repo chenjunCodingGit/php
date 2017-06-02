@@ -1,5 +1,5 @@
 <?php
-//点击提交订单时将总价更新到该用户的order表
+//点击去评论更新状态
 header('Access-Control-Allow-Origin:*');
 
 $con=mysqli_connect("localhost","root","","mydb");
@@ -13,7 +13,7 @@ if (mysqli_connect_errno())
 mysqli_query($con, "set names utf8");
 
 $thisId=$_GET['thisId'];
-$ispay=1;//未支付
+$ispay=3; //已经评论
 $callback = $_GET['callback'];
 
 $result =  mysqli_query($con,"UPDATE pay SET ispay='" . $ispay ."' WHERE id='" . $thisId ."'");

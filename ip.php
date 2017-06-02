@@ -1,3 +1,3 @@
 <?php
-	ini_set('session.cookie_domain', '125.81.68.144');
+	ini_set('session.cookie_domain', '192.168.155.4');
 ?>

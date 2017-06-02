@@ -1,5 +1,5 @@
 <?php
-//点击提交订单时将总价更新到该用户的order表
+//提交评论内容
 header('Access-Control-Allow-Origin:*');
 
 $con=mysqli_connect("localhost","root","","mydb");
@@ -12,11 +12,12 @@ if (mysqli_connect_errno())
 // 设置编码，防止中文乱码
 mysqli_query($con, "set names utf8");
 
-$thisId=$_GET['thisId'];
-$ispay=1;//未支付
+$id=$_GET['id'];
+$contents=$_GET['contents'];
+$shopstar=$_GET['shopstar'];
 $callback = $_GET['callback'];
 
-$result =  mysqli_query($con,"UPDATE pay SET ispay='" . $ispay ."' WHERE id='" . $thisId ."'");
+$result =  mysqli_query($con,"UPDATE valuates SET contents='" . $contents ."',shopstar='" . $shopstar ."' WHERE id='" . $id ."'");
 
 if($result){
 	$ret = array(

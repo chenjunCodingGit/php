@@ -13,7 +13,7 @@ if (mysqli_connect_errno())
 mysqli_query($con, "set names utf8");
 
 $thisId=$_GET['thisId'];
-$ispay=2;
+$ispay=2;//已经付款，未评论
 $callback = $_GET['callback'];
 
 $result =  mysqli_query($con,"UPDATE pay SET ispay='" . $ispay ."' WHERE id='" . $thisId ."'");
