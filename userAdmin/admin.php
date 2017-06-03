@@ -16,7 +16,7 @@ mysqli_query($mysqliConn, "set names utf8");
 //数据库查询所有（比较）
 $name=$_GET['name']; 
 $password=$_GET['password'];
-// $callback = $_GET['callback'];
+$callback = $_GET['callback'];
 
 $arr = array();	
 //$username = $_POST['username'];
@@ -29,21 +29,21 @@ $row=mysqli_fetch_array($result);
 // echo $_SESSION['user'];
 
 if(mysqli_num_rows($result) == 1){
-	$_SESSION['user'] = $row[0];
+	// $_SESSION['user'] = $row[0];
 	$ret = array(
         'status' => 1, // 1成功，0失败
         'msg'   => 'success'
     );
-    // echo $callback.'('.json_encode($ret).')';
-    echo json_encode($ret);
+    echo $callback.'('.json_encode($ret).')';
+    // echo json_encode($ret);
     exit();
 }else{
 	$ret = array(
         'status' => 0, // 1成功，0失败
         'msg'   => 'failed'
     );
-    // echo $callback.'('.json_encode($ret).')';
-    echo json_encode($ret);
+    echo $callback.'('.json_encode($ret).')';
+    // echo json_encode($ret);
     exit();
 }
 ?>
