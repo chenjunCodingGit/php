@@ -1,0 +1,46 @@
+<?php
+//点击提交订单时将总价更新到该用户的order表
+header('Access-Control-Allow-Origin:*');
+
+$con=mysqli_connect("localhost","root","","mydb");
+// 检测连接
+if (mysqli_connect_errno())
+{
+  echo "连接失败: " . mysqli_connect_error();
+}
+
+// 设置编码，防止中文乱码
+mysqli_query($con, "set names utf8");
+
+$thisId=1;
+$image=$_GET['image'];
+$title=$_GET['title'];
+$describes=$_GET['describes'];
+$scale=$_GET['scale'];
+$price=$_GET['price'];
+$goodid=$_GET['goodid'];
+$callback = $_GET['callback'];
+
+$result =  mysqli_query($con,"UPDATE details SET image='" . $image ."',title='" . $title ."',describes='" . $describes ."',scale='" . $scale ."',price='" . $price ."',goodid='" . $goodid ."' WHERE id='" . $thisId ."'");
+
+if($result){
+	$ret = array(
+        'status' => 1, // 1成功，0失败
+        'msg'   => 'success'
+    );
+    echo $callback.'('.json_encode($ret).')';
+    // echo json_encode($ret);
+    exit();
+}else{
+	$ret = array(
+        'status' => 0, // 1成功，0失败
+        'msg'   => 'failed'
+    );
+    echo $callback.'('.json_encode($ret).')';
+    // echo json_encode($ret);
+    exit();
+}
+
+mysqli_close($con);
+?>
+

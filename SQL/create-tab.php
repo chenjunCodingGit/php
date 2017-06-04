@@ -12,12 +12,14 @@ if ($conn->connect_error) {
 } 
 
 // 使用 sql 创建数据表
-$sql = "CREATE TABLE valuates (
+$sql = "CREATE TABLE details (
 id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY, 
-name VARCHAR(30) NOT NULL,
-goodid INT(3) NOT NULL,
-contents VARCHAR(150) NOT NULL,
-shopstar INT(3) NOT NULL
+image VARCHAR(30) NOT NULL,
+title VARCHAR(150) NOT NULL,
+describes VARCHAR(150) NOT NULL,
+scale VARCHAR(20) NOT NULL,
+price INT(16) NOT NULL,
+goodid INT(3) NOT NULL
 )ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=1";
 
 if ($conn->query($sql) === TRUE) {

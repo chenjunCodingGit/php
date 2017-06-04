@@ -19,7 +19,7 @@ $callback = $_GET['callback'];
 
 $arr = array();
 
-$result=$mysqliConn->query("SELECT image,title,price FROM goods");
+$result=$mysqliConn->query("SELECT id,image,title,describes,scale,price,goodid FROM goods");
 
 $arr = array();
 while ($row=mysqli_fetch_array($result,MYSQLI_ASSOC)) {
